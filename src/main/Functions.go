@@ -20,6 +20,12 @@ func main() {
 		return x + y
 	}))
 
+	numTerms, result := add(1,2,3,4)
+	println("num of terms=", numTerms, "result=", result)
+
+	numTerms2, result2 := add2(1,2,3,4)
+	println("num of terms=", numTerms2, "result=", result2)
+
 }
 
 func variadiableArgs(stuff ...int) int {
@@ -45,3 +51,21 @@ var add1 = func(n int) int {
 func doMath(x, y int, calc func (int, int) int) int {
 	return calc(x, y)
 }
+
+// return multiple values
+func add(terms ...int) (int, int) {
+	result := 0
+	for _, term := range terms {
+		result += term
+	}
+	return len(terms), result
+}
+
+// return multiple mixed named values
+func add2(terms ...int) (int, result int) {
+	for _, term := range terms {
+		result += term
+	}
+	return len(terms), result
+}
+
